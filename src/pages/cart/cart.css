@@ -159,3 +159,26 @@
   }
 }
 
+.remove-icon {
+  /* Your default styles here */
+  width: 20px; /* Adjust width as needed */
+  height: 20px; /* Adjust height as needed */
+}
+
+/* Tablet */
+@media only screen and (max-width: 768px) {
+  .remove-icon {
+    /* Tablet styles here */
+    width: 15px; /* Adjust width as needed for tablet */
+    height: 15px; /* Adjust height as needed for tablet */
+  }
+}
+
+/* Mobile */
+@media only screen and (max-width: 480px) {
+  .remove-icon {
+    /* Mobile styles here */
+    width: 10px; /* Adjust width as needed for mobile */
+    height: 10px; /* Adjust height as needed for mobile */
+  }
+}

@@ -8,8 +8,8 @@ const Header = () => {
     
     <Carousel>
       <Carousel.Item>
-        {/* <ExampleCarouselImage text="First slide" /> */}
-        <img src='https://images6.alphacoders.com/100/thumb-1920-1002209.jpg' width={1500} height={700} ></img>
+        
+        <img src='https://images6.alphacoders.com/100/thumb-1920-1002209.jpg' width={1500} height={700} alt=''></img>
 
         <Carousel.Caption>
           <h3 ClassName='explore'>Explore Menu</h3>
@@ -18,8 +18,8 @@ const Header = () => {
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-        {/* <ExampleCarouselImage text="Second slide" /> */}
-        <img src='https://www.cypressgreen.in/blog/wp-content/uploads/2021/03/food-2048x1366.jpg'width={1500} height={700}></img>
+        
+        <img src='https://www.cypressgreen.in/blog/wp-content/uploads/2021/03/food-2048x1366.jpg'width={1500} height={700}alt=''></img>
         <Carousel.Caption>
         <p>Epic Lunch Ensemble</p>
           <p>its time to treate yourself</p>
@@ -27,7 +27,7 @@ const Header = () => {
       </Carousel.Item>
       <Carousel.Item>
         {/* <ExampleCarouselImage text="Third slide" /> */}
-        <img src='https://wallpapercave.com/wp/wp3376127.jpg'width={1500} height={700}></img>
+        <img src='https://wallpapercave.com/wp/wp3376127.jpg'width={1500} height={700} alt=''></img>
         <Carousel.Caption>
         <p>Epic Lunch Ensemble</p>
           <p>its time to treate yourself</p>

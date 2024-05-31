@@ -3,6 +3,8 @@ import "./cart.css";
 import { StoreContext } from "../../context/storecontext";
 import { useNavigate } from "react-router-dom";
 
+import crossIcon from '../../assets/cross_icon.png'; // Adjust the path as needed
+
 const Cart = () => {
   const back = useNavigate();
   const { cartItems, food_list, removeFromCart, getTotalCartAmount } = useContext(StoreContext);
@@ -68,12 +70,12 @@ const Cart = () => {
                     <div className="cart-items-item" key={item._id}>
                       <img src={item.image} alt={item.name} />
                       <p>{item.name}</p>
-                      <p>${item.price}</p>
+                      <p>₹{item.price}</p>
                       <p>{cartItems[item._id]}</p>
-                      <p>${item.price * cartItems[item._id]}</p>
-                      <p onClick={() => handleRemoveFromCart(item._id)} className="cross">
-                        x
-                      </p>
+                      <p>₹{item.price * cartItems[item._id]}</p>
+                      <button onClick={() => handleRemoveFromCart(item._id)} className="remove-icon-button">
+                        <img src={crossIcon} alt="Remove" className="remove-icon" />
+                      </button>
                     </div>
                   );
                 }
@@ -87,17 +89,17 @@ const Cart = () => {
                 <div>
                   <div className="cart-total-details">
                     <p>Subtotal</p>
-                    <p>${getTotalCartAmount()}</p>
+                    <p>₹{getTotalCartAmount()}</p>
                   </div>
                   <hr />
                   <div className="cart-total-details">
                     <p>Delivery fee</p>
-                    <p>${getTotalCartAmount() === 0 ? 0 : 2}</p>
+                    <p>₹{getTotalCartAmount() === 0 ? 0 : 2}</p>
                   </div>
                   <hr />
                   <div className="cart-total-details">
                     <b>Total</b>
-                    <b>${getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 2}</b>
+                    <b>₹{getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 2}</b>
                   </div>
                 </div>
                 <button onClick={handleProceedToCheckout}>PROCEED TO CHECKOUT</button>
