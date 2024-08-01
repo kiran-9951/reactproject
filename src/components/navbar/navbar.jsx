@@ -1,15 +1,17 @@
 import React, { useContext, useState } from "react";
-import "./navbar.css";
-import { assets } from "../../assets/assets";
 import { Link, useNavigate } from "react-router-dom";
 import { StoreContext } from "../../context/storecontext";
 import { food_list } from "../../assets/assets";
+import { Navbar, Nav, Form, FormControl } from "react-bootstrap";
+import { assets } from "../../assets/assets";
+import "./navbar.css";
 
-const Navbar = ({ setShowLogin }) => {
-  const [menu, setmenu] = useState("menu");
-  const { getTotalCartAmount } = useContext(StoreContext);
+const NavBar = ({ setShowLogin }) => {
+  const [menu, setMenu] = useState("menu");
+  const { cartItems } = useContext(StoreContext);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const [showSearchInput, setShowSearchInput] = useState(false);
   const navigate = useNavigate();
 
   const handleSearch = (e) => {
@@ -17,7 +19,7 @@ const Navbar = ({ setShowLogin }) => {
     setSearchQuery(query);
 
     if (query.trim()) {
-      const results = food_list.filter(item =>
+      const results = food_list.filter((item) =>
         item.name.toLowerCase().includes(query)
       );
       setSearchResults(results);
@@ -27,51 +29,88 @@ const Navbar = ({ setShowLogin }) => {
   };
 
   const handleResultClick = (itemId) => {
-    navigate(`/food/${itemId}`);
+    setShowSearchInput(false);
     setSearchQuery("");
     setSearchResults([]);
+    navigate(`/food/${itemId}`);
   };
 
+  // Calculate total items count
+  const totalItems = Object.values(cartItems).reduce(
+    (acc, quantity) => acc + quantity,
+    0
+  );
+
   return (
-    <div className="navbar">
-      <Link to='/'><img src={assets.logo} alt="logo" className="logo" /></Link>
-      <ul className="navbar-menu">
-        <Link to="/" onClick={() => setmenu("home")} className={menu === "home" ? "active" : ""} style={{ textDecoration: "none" }}>HOME</Link>
-        <Link to="/menu" onClick={() => setmenu("menu")} className={menu === "menu" ? "active" : ""} style={{ textDecoration: "none" }}>MENU</Link>
-        {/* <a href="#app-download" onClick={() => setmenu("mobile-app")} className={menu === "mobile-app" ? "active" : ""} style={{ textDecoration: "none" }}>MOBILE-APP</a> */}
-        <a href="#footer" onClick={() => setmenu("contact-us")} className={menu === "contact-us" ? "active" : ""} style={{ textDecoration: "none" }}>CONTACT US</a>
-      </ul>
-      <div className="navbar-right">
-        <div className="navbar-search">
-          <input 
-            type="text" 
-            placeholder="Search..." 
+    <Navbar bg="light" expand="lg" className="navbar">
+      <Navbar.Brand as={Link} to="/">
+        <img src={assets.logo} alt="logo" className="logo" />
+      </Navbar.Brand>
+      <Navbar.Toggle aria-controls="navbar-nav" />
+      <Navbar.Collapse id="navbar-nav">
+        <Nav className="mr-auto navbar-nav">
+          <Nav.Link
+            as={Link}
+            to="/"
+            onClick={() => setMenu("home")}
+            className={menu === "home" ? "active" : ""}
+          >
+            HOME
+          </Nav.Link>
+          <Nav.Link
+            as={Link}
+            to="/menu"
+            onClick={() => setMenu("menu")}
+            className={menu === "menu" ? "active" : ""}
+          >
+            MENU
+          </Nav.Link>
+          <Nav.Link
+            href="#footer"
+            onClick={() => setMenu("contact-us")}
+            className={menu === "contact-us" ? "active" : ""}
+          >
+            CONTACT
+          </Nav.Link>
+        </Nav>
+        <Form inline className="ml-auto navbar-search">
+          <FormControl
+            type="text"
+            placeholder="Search..."
+            className="mr-sm-2 search-input"
             value={searchQuery}
-            onChange={handleSearch} 
+            onChange={handleSearch}
+            onFocus={() => setShowSearchInput(true)}
+            onBlur={() => setTimeout(() => setShowSearchInput(false), 200)}
           />
-          {searchResults.length > 0 && (
-            <div className="search-results">
-              {searchResults.map(item => (
-                <div 
-                  key={item._id} 
-                  className="search-result-item" 
-                  onClick={() => handleResultClick(item._id)}
+          <div className={`search-results ${showSearchInput ? "show" : ""}`}>
+            {searchQuery.trim() && searchResults.length === 0 ? (
+              <div className="no-results">Item not found</div>
+            ) : (
+              searchResults.map((item) => (
+                <div
+                  key={item._id}
+                  className="search-result-item"
+                  onMouseDown={() => handleResultClick(item._id)}
                 >
                   <img src={item.image} alt={item.name} />
                   <span>{item.name}</span>
                 </div>
-              ))}
-            </div>
-          )}
-        </div>
-        <div className="navbar-cart">
-          <Link to='/cart'><img src={assets.basket_icon} alt="basket" /></Link>
-          <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
-        </div>
-        <button onClick={() => setShowLogin(true)}>Sign In</button>
-      </div>
-    </div>
+              ))
+            )}
+          </div>
+        </Form>
+        <Nav className="ml-auto navbar-right">
+          <Nav.Link as={Link} to="/cart" className="navbar-cart">
+            <img src={assets.basket_icon} alt="basket" />
+            {totalItems > 0 && (
+              <div className="cart-item-count">{totalItems}</div>
+            )}
+          </Nav.Link>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
   );
 };
 
-export default Navbar;
+export default NavBar;

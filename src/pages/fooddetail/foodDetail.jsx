@@ -3,9 +3,9 @@ import { useParams } from 'react-router-dom';
 import { food_list } from '../../assets/assets'; // Adjust the path as needed
 import { StoreContext } from '../../context/storecontext';
 import './foodDetail.css';
-
-import addIconGreen from '../../assets/add_icon_green.png';
-import removeIconRed from '../../assets/remove_icon_red.png';
+import { Card, Button, Row, Col } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { toast } from "react-toastify";
 
 const FoodDetail = () => {
   const { id } = useParams();
@@ -21,31 +21,53 @@ const FoodDetail = () => {
 
   const handleAddToCart = () => {
     addToCart(id);
-    window.alert(`${foodItem.name} added to cart`);
+    toast.success(`${foodItem.name} added to cart`);
   };
 
   const handleRemoveFromCart = () => {
     if (cartItemQuantity > 0) {
       removeFromCart(id);
-      window.alert(`${foodItem.name} removed from cart`);
+      toast.error(`${foodItem.name} removed from cart`);
     }
   };
 
   return (
-    <div className="food-detail">
-      <h1 className="food-name">{foodItem.name}</h1>
-      <img src={foodItem.image} alt={foodItem.name} className="food-image" />
-      <p className="food-description">{foodItem.description}</p>
-      <p className="food-price">{price}</p>
-      <div className="cart-buttons">
-        <button onClick={handleRemoveFromCart} disabled={cartItemQuantity === 0}>
-          <img src={removeIconRed} alt="Remove" className="cart-icon" />
-        </button>
-        <span>{cartItemQuantity}</span>
-        <button onClick={handleAddToCart}>
-          <img src={addIconGreen} alt="Add" className="cart-icon" />
-        </button>
-      </div>
+    <div className="d-flex justify-content-center mt-5">
+      <Card className="shadow-lg" style={{ width: '80%' }}>
+        <Row noGutters>
+          <Col md={6}>
+            <Card.Img variant="top" src={foodItem.image} alt={foodItem.name} className="food-image" />
+          </Col>
+          <Col md={6}>
+            <Card.Body>
+              <Card.Title>{foodItem.name}</Card.Title>
+              <Card.Text>{foodItem.description}</Card.Text>
+              <Card.Text><strong>₹{price}</strong></Card.Text>
+              <div className="d-flex justify-content-between align-items-center">
+                {cartItemQuantity > 0 ? (
+                  <div className="d-flex align-items-center">
+                    <Button
+                      onClick={handleRemoveFromCart}
+                      variant="danger"
+                      disabled={cartItemQuantity === 0}
+                    >
+                      -
+                    </Button>
+                    <span className="mx-2">{cartItemQuantity}</span>
+                    <Button onClick={handleAddToCart} variant="success">
+                      +
+                    </Button>
+                  </div>
+                ) : (
+                  <Button onClick={handleAddToCart} variant="primary">
+                    Add
+                  </Button>
+                )}
+              </div>
+            </Card.Body>
+          </Col>
+        </Row>
+      </Card>
     </div>
   );
 };

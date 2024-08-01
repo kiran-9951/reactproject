@@ -197,7 +197,7 @@ export const food_list = [
     price: 150, // Random price
     description:
       "Smooth and creamy ripple ice cream featuring swirls of rich chocolate fudge folded into velvety vanilla ice cream, creating a delightful contrast of flavors and textures.",
-    category: "Desserts",
+    category: "Deserts",
   },
   {
     _id: "10",
@@ -206,7 +206,7 @@ export const food_list = [
     price: 125, // Random price
     description:
       "Refreshing fruit ice cream made with a blend of ripe seasonal fruits, including strawberries, mangoes, and peaches, churned into a creamy base for a burst of fruity goodness in every bite.",
-    category: "Desserts",
+    category: "Deserts",
   },
   {
     _id: "11",
@@ -215,7 +215,7 @@ export const food_list = [
     price: 175, // Random price
     description:
       "Indulgent jar ice cream layered with decadent chocolate cake crumbles, creamy vanilla ice cream, and luscious caramel sauce, served in a convenient jar for a delightful treat on the go.",
-    category: "Desserts",
+    category: "Deserts",
   },
 
   {
@@ -225,7 +225,7 @@ export const food_list = [
     price: 125, // Random price
     description:
       "Classic vanilla ice cream made with premium Madagascar vanilla beans, resulting in a smooth and creamy dessert with a rich, aromatic flavor that pairs perfectly with any topping or dessert.",
-    category: "Desserts",
+    category: "Deserts",
   },
   {
     _id: "13",
@@ -234,7 +234,7 @@ export const food_list = [
     price: 140, // Random price
     description:
       "Satisfying chicken sandwich featuring tender grilled chicken breast, crisp lettuce, juicy tomato slices, and creamy mayo, sandwiched between two slices of toasted bread for a delicious meal anytime.",
-    category: "Sandwiches",
+    category: "sandwich",
   },
   {
     _id: "14",
@@ -243,7 +243,7 @@ export const food_list = [
     price: 160, // Random price
     description:
       "Hearty vegan sandwich filled with layers of seasoned tofu, avocado slices, fresh spinach, crunchy cucumbers, and tangy hummus, all nestled between slices of wholesome whole grain bread.",
-    category: "Sandwiches",
+    category: "sandwich",
   },
   {
     _id: "15",
@@ -252,7 +252,7 @@ export const food_list = [
     price: 190, // Random price
     description:
       "Delicious grilled sandwich filled with a savory combination of melted cheese, thinly sliced ham, caramelized onions, and tangy Dijon mustard, all grilled to perfection on crusty bread.",
-    category: "Sandwiches",
+    category: "Sandwich",
   },
   {
     _id: "16",
@@ -261,7 +261,7 @@ export const food_list = [
     price: 210, // Random price
     description:
       "Unique bread sandwich made with slices of soft, pillowy bread filled with a flavorful mixture of spiced mashed potatoes, crunchy sev, tangy chutneys, and fresh cilantro leaves, offering a delightful burst of flavors and textures in every bite.",
-    category: "Sandwiches",
+    category: "sandwich",
   },
   {
     _id: "17",
@@ -270,7 +270,7 @@ export const food_list = [
     price: 225, // Random price
     description:
       "Delectable cupcake topped with smooth and creamy frosting, available in a variety of flavors such as chocolate, vanilla, strawberry, and red velvet, perfect for satisfying your sweet cravings.",
-    category: "Cakes",
+    category: "Cake",
   },
   {
     _id: "18",
@@ -279,7 +279,7 @@ export const food_list = [
     price: 200, // Random price
     description:
       "Decadent vegan cake made with plant-based ingredients and sweetened with natural sugars, available in flavors like chocolate, lemon, carrot, and almond, offering a guilt-free indulgence for vegans and non-vegans alike.",
-    category: "Cakes",
+    category: "Cake",
   },
   {
     _id: "19",
@@ -288,7 +288,7 @@ export const food_list = [
     price: 125, // Random price
     description:
       "Irresistible butterscotch cake layered with moist sponge cake, creamy butterscotch frosting, and crunchy caramelized nuts, creating a delightful medley of flavors and textures in every bite.",
-    category: "Cakes",
+    category: "Cake",
   },
   {
     _id: "20",
@@ -297,7 +297,7 @@ export const food_list = [
     price: 140, // Random price
     description:
       "Delicious sliced cake available in a variety of flavors such as chocolate, vanilla, strawberry, and marble, perfect for serving at parties, gatherings, or enjoying as a sweet treat with a cup of coffee or tea.",
-    category: "Cakes",
+    category: "Cake",
   },
   {
     _id: "21",

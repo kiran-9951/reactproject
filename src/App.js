@@ -7,13 +7,17 @@ import Cart from "./pages/cart/cart";
 import Footer from "./components/footer/footer";
 import LoginPopup from "./components/loginpopup/loginpopup";
 import FoodDetail from "./pages/fooddetail/foodDetail";
-import Menu from "./pages/menu/menu"; // New menu component
+import Menu from "./pages/menu/menu";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify";
+import ItemDetail from "./pages/Itemdetail/itemdetail";
 
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
 
   return (
     <>
+    <ToastContainer/>
       {showLogin && <LoginPopup setShowLogin={setShowLogin} />}
       <div className="app">
         <Navbar setShowLogin={setShowLogin} />
@@ -21,7 +25,8 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/food/:id" element={<FoodDetail />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/menu" element={<Menu />} /> {/* New route for menu */}
+          <Route path="/menu" element={<Menu />} /> 
+        <Route path="/item/:id" element={<ItemDetail/>}/>
         </Routes>
       </div>
       <Footer />

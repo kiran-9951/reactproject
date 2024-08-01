@@ -1,56 +1,61 @@
 import React, { useContext } from "react";
-import "./fooditems.css";
-import { assets } from "../../assets/assets";
+import { Card, Button, Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { StoreContext } from "../../context/storecontext";
+import { toast } from "react-toastify";
+import "./fooditems.css";
 
 const FoodItems = ({ id, name, description, price, image }) => {
   const { cartItems, addToCart, removeFromCart } = useContext(StoreContext);
 
   const handleAddToCart = (itemId) => {
     addToCart(itemId);
-    alert("Item added to cart");
+    toast.success(`${name} added to cart`);
   };
 
   const handleRemoveFromCart = (itemId) => {
     removeFromCart(itemId);
-    alert("Item removed from cart");
+    toast.error(`${name} removed from cart`);
   };
 
   return (
-    <div className="food-item">
-      <div className="food-item-img-container">
-        <img className="food-item-image" src={image} alt={name} />
-        {!cartItems[id] ? (
-          <img
-            onClick={() => handleAddToCart(id)}
-            className="add"
-            src={assets.add_icon_white}
-            alt="Add to cart"
-          />
-        ) : (
-          <div className="food-item-counter">
-            <img
-              onClick={() => handleRemoveFromCart(id)}
-              src={assets.remove_icon_red}
-              alt="Remove from cart"
-            />
-            <p>{cartItems[id]}</p>
-            <img
-              onClick={() => handleAddToCart(id)}
-              src={assets.add_icon_green}
-              alt="Add to cart"
-            />
-          </div>
-        )}
-      </div>
-      <div className="food-item-info">
-        <div className="food-item-name-rating">
-          <p>{name}</p>
-        </div>
-        <p className="food-item-description">{description}</p>
-        <p className="food-item-price">₹{price}</p>
-      </div>
-    </div>
+    <Card className="food-item mb-3">
+      <Link to={`/item/${id}`} className="food-item-link">
+        <Card.Img variant="top" src={image} alt={name} className="food-item-image" />
+      </Link>
+      <Card.Body>
+        <Card.Title>
+          <Link to={`/item/${id}`} className="food-item-link">
+            {name}
+          </Link>
+        </Card.Title>
+        <Card.Text className="food-item-description">{description}</Card.Text>
+        <Card.Text className="food-item-price">₹{price}</Card.Text>
+        <Row>
+          <Col>
+            {cartItems[id] > 0 ? (
+              <div className="food-item-counter d-flex align-items-center justify-content-between">
+                <Button 
+                  variant="danger" 
+                  onClick={() => handleRemoveFromCart(id)} 
+                  disabled={cartItems[id] === 0}
+                >
+                  -
+                </Button>
+                <span className="mx-2">{cartItems[id]}</span>
+                <Button variant="success" onClick={() => handleAddToCart(id)}>
+                  +
+                </Button>
+              </div>
+            ) : (
+              <Button variant="success" onClick={() => handleAddToCart(id)}>
+                Add
+              </Button>
+            )}
+          </Col>
+        </Row>
+      </Card.Body>
+    </Card>
   );
 };
 
