@@ -6,28 +6,72 @@
   text-align: center;
 }
 
-.cart-item-image {
-  width: 50px;
-  height: auto;
+.cart-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
-.cart-bottom {
-  margin-top: 20px;
+.cart-items {
+  flex: 2;
+  margin-right: 20px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.cart-item-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background-color: #f8f9fa;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.cart-item-name {
+  flex: 2;
+  font-size: 1.2em;
+}
+
+.cart-item-price {
+  flex: 1;
+  text-align: right;
+  margin-right: 20px;
+}
+
+.cart-item-quantity {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.remove-icon {
+  width: 20px;
+  height: auto;
+  margin-left: 10px;
 }
 
 .cart-total {
+  flex: 1;
   margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
 }
 
 .cart-total-details {
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
-}
-
-.remove-icon {
-  width: 20px;
-  height: auto;
+  background-color: #f8f9fa;
+  padding: 10px;
+  border-radius: 8px;
 }
 
 .order-placed-message {
@@ -42,18 +86,22 @@
   color: #007bff;
 }
 
-/* Responsive table styles */
-.table-responsive {
-  overflow-x: auto;
-}
-
+/* Responsive styles */
 @media (max-width: 768px) {
-  .cart-item-image {
-    width: 40px; /* Smaller image size for smaller screens */
+  .cart-content {
+    flex-direction: column;
   }
 
-  .cart-bottom {
-    font-size: 0.9rem; /* Adjust font size for smaller screens */
+  .cart-item-name {
+    font-size: 1em;
+  }
+
+  .cart-item-quantity span {
+    margin: 0 5px;
+  }
+
+  .cart-total {
+    width: 100%; /* Full width on smaller screens */
   }
 
   .cart-total-details {
@@ -67,10 +115,11 @@
 }
 
 @media (min-width: 769px) {
-  .table {
-    width: 100%;
+  .cart-total {
+    width: 300px; /* Adjust the width for larger screens */
   }
 }
+
 .empty-cart img {
   width: 150px; /* Default image size */
   height: auto;
@@ -80,30 +129,23 @@
   .empty-cart img {
     width: 100px; /* Smaller image size for tablets and smaller screens */
   }
+
+  .cart-total {
+    font-size: 0.9rem; /* Adjust font size for smaller screens */
+  }
 }
 
 @media (max-width: 480px) {
   .empty-cart img {
     width: 80px; /* Even smaller image size for mobile screens */
   }
-}
-.food-image {
-  width: 100%;
-  height: auto; /* Maintain aspect ratio */
-  object-fit: cover; /* Ensure the image covers the space without stretching */
-}
 
-.card {
-  border-radius: 8px;
-}
+  .cart-total-details {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
-.card-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  .cart-total-details p {
+    margin-bottom: 5px;
+  }
 }
-
-.btn {
-  margin: 0 5px; /* Add margin between buttons */
-}
-

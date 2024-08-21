@@ -4,7 +4,7 @@ footer {
   justify-content: space-between;
   flex-wrap: wrap; /* Allows wrapping on smaller screens */
   padding: 20px;
-  background-color: #f8f9fa;
+  background-color: #0e0f0f31;
   border-top: 1px solid #e9ecef;
 }
 

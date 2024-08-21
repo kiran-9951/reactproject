@@ -11,6 +11,7 @@ import Menu from "./pages/menu/menu";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from "react-toastify";
 import ItemDetail from "./pages/Itemdetail/itemdetail";
+import Contact from "./pages/contact/contact";
 
 const App = () => {
  
@@ -26,10 +27,11 @@ const App = () => {
           <Route path="/food/:id" element={<FoodDetail />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/menu" element={<Menu />} /> 
+          <Route path="/contact" element={<Contact/>}/>
         <Route path="/item/:id" element={<ItemDetail/>}/>
         </Routes>
       </div>
-      <Footer />
+      <Footer /> 
     </>
   );
 };

@@ -66,7 +66,7 @@ const NavBar = ({ setShowLogin }) => {
             MENU
           </Nav.Link>
           <Nav.Link
-            href="#footer"
+            as={Link} to="/contact"
             onClick={() => setMenu("contact-us")}
             className={menu === "contact-us" ? "active" : ""}
           >
